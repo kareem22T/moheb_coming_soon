@@ -25,18 +25,51 @@
 <body>
 	
 	<div class="center-text" style="padding: 0;width: 100vw; height: 100vh;">
-		
 		<div class="display-table" style="background-image: url('./images/football-composition-with-copyspace.jpg');
 				background-size: cover;
 				background-position: center;
-				background-repeat: no-repeat;">
+				background-repeat: no-repeat;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: center;
+				gap: 1rem;
+				">
+			<div id="countdown" style="font-size: 29px;font-weight: 700;color: #da2926;"></div>
 			<div class="display-table-cell">
 				<img src="./images/logo.jpeg" alt="" style="width: 220px; mix-blend-mode: darken;">
 				<h1 class="title font-white" style="color: #19346b;"><b>Comming Soon</b></h1>
 				<h4 class="desc font-white" style="color: #af090a;">The first sports dictionary</h4>
 			</div><!-- display-table -->
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/UmIYanq5gH8?si=y6-6Dgs0mT8MUqVl"
+				title="YouTube video player" frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowfullscreen style="overflow: hidden;border-radius: 16px;box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"></iframe>
 		</div><!-- display-table-cell -->
 	</div><!-- main-area -->
-	
+	<script>
+		// Set the date for the Olympic Cumming Game
+		const olympicDate = new Date('July 26, 2024 00:00:00 UTC').getTime();
+
+		// Update the countdown every second
+		const countdown = setInterval(function () {
+			const now = new Date().getTime();
+			const distance = olympicDate - now;
+
+			if (distance > 0) {
+				const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+				const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+				const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+				document.getElementById('countdown').innerHTML = `
+	          ${days}d ${hours}h ${minutes}m ${seconds}s
+	        `;
+			} else {
+				clearInterval(countdown);
+				document.getElementById('countdown').innerHTML = 'The Olympic Cumming Game has begun!';
+			}
+		}, 1000);
+	</script>
 </body>
 </html>
